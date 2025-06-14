@@ -21,17 +21,18 @@ async function getCodename() {
 async function loadDeviceConfig() {
   try {
     const codename = await getCodename();
-    const url = `https://raw.githubusercontent.com/xetrazxz/optimax/main/config/${codename}`;
+    const url = `https://raw.githubusercontent.com/xetrazxz/optimax/main/config/${codename}.sh`;
     const response = await fetch(url);
-    if (!response.ok) throw new Error(`Config not found for ${codename}`);
+    if (!response.ok) throw new Error(`No config found for ${codename}`);
     const script = await response.text();
 
-    document.getElementById("output").textContent = `Applying config for ${codename}...\n\n${script}`;
+    document.getElementById("output").textContent = `Running ${codename}.sh...\n\n${script}`;
     await runShell(script);
   } catch (e) {
     document.getElementById("output").textContent = `❌ ${e.message}`;
   }
 }
+
 
 document.addEventListener("DOMContentLoaded", () => {
   const slider = document.getElementById("saturation-slider");

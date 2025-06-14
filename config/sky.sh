@@ -62,6 +62,15 @@ do
     echo "2" > "$queue/rq_affinity"
     echo "2048" > "$queue/read_ahead_kb"
 done ;
+
+#!/bin/sh
+
+i=1
+while [ "$i" -le 5 ]; do
+    echo "Setting to None"
+    i=$((i + 1))
+done
+echo ""
 #
 echo "Done ....."
 exit 0

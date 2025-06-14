@@ -7,7 +7,7 @@ echo $CODENAME
 #
 echo "Underclocker"
 #
-echo "powersave" > /sys/devices/system/cpu/cpufreq/policy0/scaling_available_governors
-echo "powersave" > /sys/devices/system/cpu/cpufreq/policy6/scaling_available_governors
-echo "1632000" > /sys/devices/system/cpu/cpufreq/policy0/cpuinfo_max_freq
-echo "1900800" > /sys/devices/system/cpu/cpufreq/policy0/cpuinfo_max_freq
+su -c "echo "powersave" > /sys/devices/system/cpu/cpufreq/policy0/scaling_governor"
+su -c "echo "powersave" > /sys/devices/system/cpu/cpufreq/policy6/scaling_governor"
+su -c "echo "1632000" > /sys/devices/system/cpu/cpufreq/policy0/scaling_max_freq"
+su -c "echo "1900800" > /sys/devices/system/cpu/cpufreq/policy0/scaling_max_freq"

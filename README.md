@@ -24,20 +24,22 @@ Requires KernelSU(N) / Apatch support.
 ## Device Support
 ** For Adding Your Device Config
 - Send Phone Available CPU Policy clock Speeds and Available CPU governers Here to [Telegram](https://t.me/+UceVylCgLSoyMmNl)
--Format
 
 
--
--CodeName
+- Format
 
 
--PolicyX - Clock Speed 1 2 3 . . . . 
+
+- CodeName
 
 
--PolicyY - Clock Speed 1 2 3 . . . . 
+- PolicyX - Clock Speed 1 2 3 . . . . 
 
 
--Available CPU Governer 
+- PolicyY - Clock Speed 1 2 3 . . . . 
+
+
+- Available CPU Governer 
 
 
 

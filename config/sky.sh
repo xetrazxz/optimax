@@ -63,9 +63,23 @@ do
     echo "2048" > "$queue/read_ahead_kb"
 done ;
 
+#!/system/bin/sh
+
+for blk in /sys/block/mmcblk*/queue/scheduler /sys/block/sd*/queue/scheduler; do
+    [ -e "$blk" ] && echo "mq-deadline" > "$blk" 2>/dev/null
+done
+
+
 i=1
 while [ "$i" -le 5 ]; do
     echo "Setting to None"
+    i=$((i + 1))
+    sleep 0.9
+done
+echo ""
+i=1
+while [ "$i" -le 5 ]; do
+    echo "Setting to DeadDLine"
     i=$((i + 1))
     sleep 0.9
 done

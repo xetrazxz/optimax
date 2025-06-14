@@ -37,28 +37,57 @@ async function loadDeviceConfig() {
 document.addEventListener("DOMContentLoaded", () => {
   const slider = document.getElementById("saturation-slider");
   const valueText = document.getElementById("saturation-value");
+  const accentPicker = document.getElementById("accent-picker");
 
+  // Load accent from localStorage
+  const savedAccent = localStorage.getItem("optimax-accent");
+  if (savedAccent) {
+    document.documentElement.style.setProperty('--accent', savedAccent);
+    accentPicker.value = savedAccent;
+  }
+
+  accentPicker.addEventListener("input", () => {
+    const color = accentPicker.value;
+    document.documentElement.style.setProperty('--accent', color);
+    localStorage.setItem("optimax-accent", color);
+  });
+
+  // CMD buttons in row
+  document.querySelectorAll('.colormod-btn').forEach(btn => {
+    btn.addEventListener('click', async () => {
+      const cmd = btn.dataset.cmd;
+      try {
+        await runShell(cmd);
+      } catch (e) {
+        printOutput("Command failed: " + e);
+      }
+    });
+  });
+
+  // Saturation slider
   slider.addEventListener("input", async () => {
     const val = parseFloat(slider.value).toFixed(2);
     valueText.textContent = val;
     await runShell(`service call SurfaceFlinger 1022 f ${val}`);
   });
 
+  // Dexopt
   document.getElementById("run-dexopt").addEventListener("click", async () => {
     const profile = document.getElementById("dexopt-profile").value;
     const cmd = `cmd package compile -a --compile-layouts -f -m ${profile}`;
     await runShell(cmd);
   });
 
+  // Governor
   document.getElementById("apply-governor").addEventListener("click", async () => {
     const governor = document.getElementById("governor-select").value;
     try {
-      await runShell(`for i in /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor; do echo ${governor} > $i; done && echo "Governer Set To ${governor}"`);
+      await runShell(`for i in /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor; do echo ${governor} > $i; done && echo "Governor Set To ${governor}"`);
     } catch (e) {
       printOutput("Governor error: " + e);
     }
   });
 
+  // Load config
   document.getElementById("load-config").addEventListener("click", loadDeviceConfig);
-
 });

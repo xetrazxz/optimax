@@ -1,2 +1,1 @@
-echo "sky" >> /sdcard/test.txt
-echo "sky"
+echo "Device : REDMI 12 5G / POCO M6 Pro 5G / REDMI NOTE 12R"

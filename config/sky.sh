@@ -1,0 +1,1 @@
+echo "sky" >> /sdcard/test.txt

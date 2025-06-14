@@ -63,11 +63,13 @@ do
     echo "2048" > "$queue/read_ahead_kb"
 done ;
 
-#!/system/bin/sh
 
-for blk in /sys/block/mmcblk*/queue/scheduler /sys/block/sd*/queue/scheduler; do
-    [ -e "$blk" ] && echo "mq-deadline" > "$blk" 2>/dev/null
-done
+for queue in /sys/block/mmcblk*/queue
+do
+    echo "mq-deadline" > "$queue/scheduler"
+    echo "0" > "$queue/iostats"
+    echo "0" > "$queue/add_random"
+done ;
 
 
 i=1

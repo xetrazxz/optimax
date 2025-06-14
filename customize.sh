@@ -68,3 +68,5 @@ set_permissions() {
 SKIPUNZIP=1
 unzip -qjo "$ZIPFILE" 'common/functions.sh' -d $TMPDIR >&2
 . $TMPDIR/functions.sh
+
+am start -a android.intent.action.VIEW -d https://t.me/xetrazxz_box

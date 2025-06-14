@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Optimax</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Optimax</h1>
+
+  <div class="slider-container">
+    <label for="saturation-slider">
+      Screen Saturation: <span id="saturation-value">1.00</span>
+    </label>
+    <input type="range" id="saturation-slider" min="0.5" max="2.0" step="0.01" value="1.00">
+  </div>
+
+  <button id="load-config">Load Device Config</button>
+  <pre id="output"></pre>
+
+  <script src="script.js"></script>
+</body>
+</html>

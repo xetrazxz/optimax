@@ -8,15 +8,40 @@
 <body>
   <h1>Optimax</h1>
 
-  <div class="slider-container">
+  <fieldset class="slider-container">
+    <legend>Screen Saturation</legend>
     <label for="saturation-slider">
-      Screen Saturation: <span id="saturation-value">1.00</span>
+      Saturation Level: <span id="saturation-value">1.00</span>
     </label>
     <input type="range" id="saturation-slider" min="0.5" max="2.0" step="0.01" value="1.00">
+  </fieldset>
+
+  <fieldset class="dropdown-container">
+    <legend>Dexopt Profile</legend>
+    <label for="dexopt-profile">Select Profile:</label>
+    <select id="dexopt-profile">
+      <option value="speed">Speed</option>
+      <option value="everything-profile">Everything Profile</option>
+    </select>
+    <button id="run-dexopt">Run Dexopt</button>
+  </fieldset>
+
+  <fieldset class="dropdown-container">
+    <legend>CPU Governor</legend>
+    <label for="governor-select">Select Governor:</label>
+    <select id="governor-select">
+      <option value="walt">WALT</option>
+      <option value="powersave">Powersave</option>
+      <option value="schedutil">Schedutil</option>
+    </select>
+    <button id="apply-governor">Apply Governor</button>
+  </fieldset>
+
+  <div class="actions">
+    <button id="load-config">Load Device Config</button>
   </div>
 
-  <button id="load-config">Load Device Config</button>
-  <pre id="output"></pre>
+  <pre id="output" aria-live="polite"></pre>
 
   <script src="script.js"></script>
 </body>

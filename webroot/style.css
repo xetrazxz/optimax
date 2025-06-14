@@ -8,6 +8,11 @@
   --border-radius: 8px;
   --font-family: 'Segoe UI', sans-serif;
 }
+@font-face {
+  font-family: 'alien';
+  src: url('fonts/fontH.ttf') format('truetype');
+}
+
 
 body {
   font-family: var(--font-family);
@@ -21,6 +26,7 @@ h1 {
   font-size: 2.2em;
   color: var(--accent);
   text-align: center;
+  font-family: 'alien', sans-serif;
   margin-bottom: 32px;
   letter-spacing: 1px;
   text-shadow: 0 2px 4px rgba(0,0,0,0.6);

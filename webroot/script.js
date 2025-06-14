@@ -84,7 +84,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Dexopt
   document.getElementById("run-dexopt").addEventListener("click", async () => {
     const profile = document.getElementById("dexopt-profile").value;
-    const cmd = `cmd package compile -a --compile-layouts -f -m ${profile}`;
+    const cmd = `pm compile -m ${profile} -a && pm compile -m ${profile} --secondary-dex -a & pm compile --compile-layouts -a & pm compile -m ${profile} --full -a && pm art dexopt-packages -r bg-dexopt && pm art cleanup `;
     await runShell(cmd);
   });
 

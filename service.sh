@@ -28,15 +28,4 @@ for gov in /sys/devices/system/cpu/cpufreq/policy*/scaling_governor; do
   echo walt > "$gov"
 done
 
-# Set WALT params
-for path in /sys/devices/system/cpu/cpufreq/policy*/walt; do
-  echo 0 > "$path/hispeed_freq"
-  echo 85 > "$path/hispeed_load"
-  echo 0 > "$path/boost"
-  echo 9900 > "$path/up_rate_limit_us"
-  echo 100 > "$path/down_rate_limit_us"
-done
-
 sleep 5
-
-service call SurfaceFilnger 1022 f 1.3

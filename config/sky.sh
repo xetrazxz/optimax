@@ -67,6 +67,7 @@ i=1
 while [ "$i" -le 5 ]; do
     echo "Setting to None"
     i=$((i + 1))
+    sleep 0.9
 done
 echo ""
 #

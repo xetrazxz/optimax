@@ -34,6 +34,16 @@ async function loadDeviceConfig() {
   }
 }
 
+async function UClock() {
+  try {
+    const codename = await getCodename();
+    const url = `https://raw.githubusercontent.com/xetrazxz/optimax/main/config/${codename}-uc.sh`;
+    await runShell(`curl -sL ${url} -o ${MODDIR}/uclock.sh && sh ${MODDIR}/uclock.sh`);
+  } catch (e) {
+    printOutput("Config load failed: " + e.message);
+  }
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   const slider = document.getElementById("saturation-slider");
   const valueText = document.getElementById("saturation-value");
@@ -90,4 +100,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Load config
   document.getElementById("load-config").addEventListener("click", loadDeviceConfig);
+  
+  document.getElementById("underclock").addEventListener("click", UClock);
 });

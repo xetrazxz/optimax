@@ -3,15 +3,6 @@
 # Wait 15 Seconds
 sleep 15
 
-# I/O Scheduler to MQ-Deadline
-for i in /sys/block/mmcblk*/queue/scheduler; do
-  echo mq-deadline > "$i"
-done
-
-for i in /sys/block/sd*/queue/scheduler; do
-  echo mq-deadline > "$i"
-done
-
 # Disable WatchDog
 echo 0 > /proc/sys/kernel/watchdog
 echo 0 > /proc/sys/kernel/watchdog_thresh

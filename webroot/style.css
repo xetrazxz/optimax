@@ -46,7 +46,10 @@ h1 {
 }
 
 /* Border button style */
-#load-config {
+#load-config,
+#boot-configon,
+#underclock,
+#boot-configoff {
   padding: 10px 20px;
   font-weight: bold;
   font-size: 1em;

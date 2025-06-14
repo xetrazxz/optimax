@@ -1,4 +1,5 @@
 const MODDIR = "/data/adb/modules/optimax";
+const HELPER = "/data/adb/modules/optimax-helper";
 
 function runShell(command) {
   if (typeof ksu !== "object" || typeof ksu.exec !== "function")
@@ -39,6 +40,24 @@ async function UClock() {
     const codename = await getCodename();
     const url = `https://raw.githubusercontent.com/xetrazxz/optimax/main/config/${codename}-uc.sh`;
     await runShell(`curl -sL ${url} -o ${MODDIR}/uclock.sh && sh ${MODDIR}/uclock.sh`);
+  } catch (e) {
+    printOutput("Config load failed: " + e.message);
+  }
+}
+
+async function bootDeviceConfigOn() {
+  try {
+    const codename = await getCodename();
+    const url = `https://raw.githubusercontent.com/xetrazxz/optimax/main/config/${codename}.sh`;
+    await runShell(`curl -sL ${url} -o ${HELPER}/service.sh && echo "Set Service at Boot"`);
+  } catch (e) {
+    printOutput("Config load failed: " + e.message);
+  }
+}
+
+async function bootDeviceConfigOff() {
+  try {
+    await runShell(`rm -rf ${HELPER}/service.sh && echo "Removed Service at Boot"`);
   } catch (e) {
     printOutput("Config load failed: " + e.message);
   }
@@ -102,4 +121,9 @@ document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("load-config").addEventListener("click", loadDeviceConfig);
   
   document.getElementById("underclock").addEventListener("click", UClock);
+  
+  document.getElementById("boot-configon").addEventListener("click", bootDeviceConfigOn);
+  
+  document.getElementById("boot-configoff").addEventListener("click", bootDeviceConfigOff);
+  
 });

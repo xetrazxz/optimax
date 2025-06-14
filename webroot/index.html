@@ -38,9 +38,9 @@
   </fieldset>
   
   <div class="colormod-row">
-    <button class="colormod-btn" data-cmd="service call SurfaceFlinger 1015 i32 0">Normal</button>
-    <button class="colormod-btn" data-cmd="service call SurfaceFlinger 1015 i32 1 f 0.79 f 0 f 0 f 0 f 0 f 0.99 f 0 f 0 f 0 f 0 f 1.0">Bright</button>
-    <button class="colormod-btn" data-cmd="service call SurfaceFlinger 1015 i32 1 f 1 f 0 f 0 f 0 f 0 f 0.79 f 0 f 0 f 0 f 0 f 1">XReality</button>
+    <button class="colormod-btn" data-cmd="service call SurfaceFlinger 1015 i32 0 && echo 'Default Color' ">Normal</button>
+    <button class="colormod-btn" data-cmd="service call SurfaceFlinger 1015 i32 1 f 0.79 f 0 f 0 f 0 f 0 f 0.99 f 0 f 0 f 0 f 0 f 1.0 && echo 'Bright Mode' ">Bright</button>
+    <button class="colormod-btn" data-cmd="service call SurfaceFlinger 1015 i32 1 f 1 f 0 f 0 f 0 f 0 f 0.79 f 0 f 0 f 0 f 0 f 1 && echo 'Xreality On' ">XReality</button>
   </div>
 
     <br>
@@ -48,6 +48,8 @@
   <div class="actions">
     <button id="underclock">UnderClock</button>
     <button id="load-config">Cloud Device Script</button>
+    <button id="boot-configon">Enable Cloud Config at BOOT</button>
+    <button id="boot-configoff">Disable Cloud Config at BOOT</button>
     
   </div>
   
